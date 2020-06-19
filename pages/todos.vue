@@ -1,20 +1,21 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="todo in todos" v-bind:key="todo.id">
-        <input type="checkbox" v-bind:checked="todo.done" v-on:change="toggle(todo)" />
-        Done:{{todo.done}} / Name:{{todo.name}} / Created:{{todo.created.toDate()}}
-        <button
-          v-on:click="remove(todo.id)"
-        >remove</button>
-      </li>
-    </ul>
+  <div class="content">
     <div class="form">
-      <form v-on:submit.prevent="add">
+      <form @submit.prevent="add">
         <input v-model="name" />
-        <button>Add</button>
+        <button class="button is-link">Add</button>
       </form>
     </div>
+    <ul>
+      <li class="is-vertical-center" v-for="todo in todos" :key="todo.id">
+        <input type="checkbox" :checked="todo.done" @change="toggle(todo)" />
+        <span class="done" v-if="todo.done">Done!</span>
+        <span>{{todo.name}}</span>
+        <span class="date">{{todo.created.toDate()}}</span>
+        <button class="button is-danger is-small" @click="remove(todo.id)">remove</button>
+      </li>
+    </ul>
+
   </div>
 </template>
 
@@ -54,3 +55,25 @@ export default {
   }
 };
 </script>
+
+<style>
+.form {
+  margin-top: 16px;
+  margin-left:16px;
+  line-height: 2.4;
+}
+
+.done {
+  color: red;
+}
+
+.date {
+  font-size: 14px;
+}
+
+li {
+  list-style: none;
+  line-height: 2.4;
+  margin-bottom: 16px;
+}
+</style>
