@@ -14,7 +14,7 @@
     "@nuxtjs/bulma": "^1.2.7",
     "@nuxtjs/dotenv": "^1.3.0",
     "firebase": "^6.2.4",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "serialize-javascript": ">=2.1.1",
     "vuexfire": "^3.0.1"
   },
